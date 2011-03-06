@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, shabat!</string>
+    <string name="app_name">Shabat</string>
+    <string name="airplane_text">Enable airplane mode</string>
+    <item type="id" name="app_notification_id"/>
+    <string name="bindText">Bind</string>
+    <string name="unbindText">Unbind</string>
+    <string name="minusText">-</string>
+    <string name="plusText">+</string>
+    <string name="alosText">עלות השחר</string>    
+    <string name="sofZmanShemaGRText">סוף זמן ק"\ש לגר"\א</string>
+    <string name="sunriseText">זריחה</string>
+    <string name="sofZmanShemaTefilaMGText">סוף זמן תפילה למג"א</string>
+    <string name="sofZmanShemaMGText">סוף זמן ק"\ש למג"\א</string>
+    <string name="zmanText">Zman</string>
+    <string name="timeText">Time</string>
+    <string name="sofZmanTefilaGRText">סוף זמן תפילה לגר"א</string>
+    <string name="chatzotText">חצות</string>
+    <string name="minchaGedolaText">מנחה גדולה</string>
+    <string name="minchaKetanaText">מנחה קטנה</string>
+    <string name="plagHaminchaText">פלג המנחה</string>
+    <string name="tziatText">צאת הכוכבים</string>
+    <string name="tziat72Text">צאת הכובים ר"ת</string>
+    <string name="shkiahText">שקיעה</string>
+    <string name="candleLightingText">הדלקת נרות</string>
+</resources>

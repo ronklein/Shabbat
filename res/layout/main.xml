@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<ScrollView android:layout_width="fill_parent" android:id="@+id/scrollView1" android:layout_height="wrap_content">
+<TableLayout android:id="@+id/tableLayout1" android:layout_width="fill_parent" android:layout_height="wrap_content">
+    <TableRow> 
+    	<TextView android:width = "150dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/hebDateTV" android:text=""></TextView>
+    </TableRow> 
+    <TableRow> 
+    <TextView android:width = "150dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/alosTV" android:text="@string/alosText"></TextView>
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/alosValTV" android:text=""></TextView>
+    </TableRow>
+    <TableRow> 
+    <TextView android:width = "150dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/sunriseTV" android:text="@string/sunriseText"></TextView>
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/sunriseValTV" android:text=""></TextView>
+    </TableRow> 
+    <TableRow> 
+    <TextView android:width = "150dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/sofZmanShemaMGTV" android:text="@string/sofZmanShemaMGText"></TextView>
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/sofZmanShemaMGValTV" android:text=""></TextView>
+    </TableRow>
+    <TableRow> 
+    <TextView android:width = "150dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/sofZmanShemaGRTV" android:text="@string/sofZmanShemaGRText"></TextView>
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/sofZmanShemaGRValTV" android:text=""></TextView>
+    </TableRow>  
+    <TableRow> 
+    <TextView android:width = "150dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/sofZmanShemaTefilaMGTV" android:text="@string/sofZmanShemaMGText"></TextView>
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/sofZmanShemaTefilaMGValTV" android:text=""></TextView>
+    </TableRow>   
+    <TableRow> 
+    <TextView android:width = "150dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/sofZmanShemaTefilaGRTV" android:text="@string/sofZmanShemaGRText"></TextView>
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/sofZmanShemaTefilaGRValTV" android:text=""></TextView>
+    </TableRow>
+    <TableRow> 
+    <TextView android:width = "150dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/chatzotTV" android:text="@string/chatzotText"></TextView>
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/chatzotValTV" android:text=""></TextView>
+    </TableRow>
+    <TableRow> 
+    <TextView android:width = "150dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/minchaGedolaTV" android:text="@string/minchaGedolaText"></TextView>
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/minchaGedolaValTV" android:text=""></TextView>
+    </TableRow> 
+    <TableRow> 
+    <TextView android:width = "150dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/minchaKetanaTV" android:text="@string/minchaKetanaText"></TextView>
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/minchaKetanaValTV" android:text=""></TextView>
+    </TableRow>     
+    <TableRow> 
+    <TextView android:width = "150dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/plagHaminchaTV" android:text="@string/plagHaminchaText"></TextView>
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/plagHaminchaValTV" android:text=""></TextView>
+    </TableRow>
+    <TableRow> 
+    <TextView android:width = "150dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/shkiahTV" android:text="@string/shkiahText"></TextView>
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/shkiahValTV" android:text=""></TextView>
+    </TableRow>
+    <TableRow> 
+    <TextView android:width = "150dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/tziatTV" android:text="@string/tziatText"></TextView>
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/tziatValTV" android:text=""></TextView>
+    </TableRow>            
+    <TableRow> 
+    <TextView android:width = "150dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/tziat72TV" android:text="@string/tziat72Text"></TextView>
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/tziat72ValTV" android:text=""></TextView>
+    </TableRow> 
+    <TableRow> 
+    <TextView android:width = "150dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/candleLightingTV" android:text="@string/candleLightingText"></TextView>
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/candleLightingValTV" android:text=""></TextView>
+    </TableRow>  
+    <TableRow>
+	<Button android:layout_height="wrap_content" android:id="@+id/minusBtn" android:layout_width="wrap_content" android:text="@string/minusText"></Button>
+	<Button android:layout_height="wrap_content" android:id="@+id/plusBtn" android:layout_width="wrap_content" android:text="@string/plusText"></Button>
+    </TableRow>  
+    <TableRow>
+	<CheckBox android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/airplane_checkbox" android:text="@string/airplane_text"></CheckBox>            
+	<Button android:layout_height="wrap_content" android:id="@+id/bindBtn" android:layout_width="wrap_content" android:text="@string/bindText"></Button>
+	<Button android:layout_height="wrap_content" android:id="@+id/unbindBtn" android:layout_width="wrap_content" android:text="@string/unbindText"></Button>
+	<kankan.wheel.widget.WheelView android:id="@+id/hour"
+            android:layout_height="wrap_content"
+            android:layout_width="46dp"/>    
+    </TableRow>
+</TableLayout>
+</ScrollView>            
+
+</LinearLayout>

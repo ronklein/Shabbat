@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, shabat!</string>
+    <string name="app_name">Shabat</string>
+    <string name="airplane_text">Enable airplane mode</string>
+    <item type="id" name="app_notification_id"/>
+    <string name="bindText">Bind</string>
+    <string name="unbindText">Unbind</string>
+    <string name="minusText">-</string>
+    <string name="plusText">+</string>    
+    <string name="alosText">Alos</string>    
+    <string name="sofZmanShemaGRText">Sof Zman Shema GR</string>
+    <string name="sunriseText">Sunrise</string>
+    <string name="sofZmanShemaTefilaMGText">Sof Zman Tefila MG</string>
+    <string name="sofZmanShemaMGText">Sof Zman Shema MG</string>
+    <string name="zmanText">Zman</string>
+    <string name="timeText">Time</string>
+    <string name="sofZmanTefilaGRText">Sof Zman Tefila GR</string>
+    <string name="chatzotText">Chatzot</string>
+    <string name="minchaGedolaText">Mincha Gedola</string>
+    <string name="minchaKetanaText">Mincha Ketana</string>
+    <string name="plagHaminchaText">Plag Hamincha</string>
+    <string name="tziatText">Tzait</string>
+    <string name="tziat72Text">Tzait 72</string>
+    <string name="shkiahText">Shkiah</string>
+    <string name="candleLightingText">Candle Lighting</string>
+</resources>

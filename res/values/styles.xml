@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<style name="SBstyle" parent="@android:style/Theme.Black">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:tabWidgetStyle">@style/LightTabWidget</item>
+</style>
+
+<color name="custom_theme_color">#000</color>
+
+<style name="LightTabWidget" parent="@android:style/Widget.TabWidget">
+
+<item name="android:textColor">#f00</item>
+</style>
+
+
+
+</resources>

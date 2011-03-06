@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory android:title="Settings">
+        <CheckBoxPreference
+                android:key="Airplane_Option"
+                android:title="Airplane option"
+                android:defaultValue="true"
+                android:summary="Set phone to Airplane mode before Shabat entrance" />
+                
+		<kankan.wheel.widget.WheelPreference  
+                android:dependency="Airplane_Option"
+                android:key="customPref"
+                android:defaultValue="10"
+                android:title="Minutes before/after" />   
+
+ 		<CheckBoxPreference
+                android:key="Calendar_Option"
+                android:title="Calendar option"
+                android:defaultValue="true"
+                android:summary="Update calendar with next enterance of Shabat" />
+                         
+
+    </PreferenceCategory>
+    
+
+    
+</PreferenceScreen>
