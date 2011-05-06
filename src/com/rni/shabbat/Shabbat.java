@@ -76,7 +76,12 @@ public class Shabbat extends Activity {
     }
     
 	public void ShowZmanin() {
-		String hebDate = Taarich.GetHebrewDate( c, "Hebrew");
+		String hebDate;
+		if (Locale.getDefault().getDisplayName().toLowerCase().indexOf("english")>=0) {
+			hebDate = Taarich.GetHebrewDate( c, "English");	
+		} else {
+			hebDate = Taarich.GetHebrewDate( c, "Hebrew");			
+		}
 		ArrayList<String> sArray =  new ArrayList<String>();
         ListView list = (ListView) findViewById(R.id.list2);
         
@@ -116,11 +121,14 @@ public class Shabbat extends Activity {
     // Called when the activity is first created. 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
+    	/*
     	Locale locale = new Locale("iw");
     	locale.setDefault(locale);
     	  Configuration config2 = new Configuration();
     	    config2.locale = locale;
-    	
+    	*/
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.maininfo);
         
