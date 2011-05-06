@@ -1,6 +1,6 @@
 package com.rni.shabbat;
 
-import com.rni.shabat.R;
+import com.rni.shabbat.R;
 
 import android.app.TabActivity;
 import android.content.Intent;
@@ -24,6 +24,14 @@ public class ShabbatTabWidget extends TabActivity {
 	    TabHost.TabSpec spec;  // Resusable TabSpec for each tab
 	    Intent intent;  // Reusable Intent for each tab
 
+	 
+	    // Do the same for the other tabs
+	    intent = new Intent().setClass(this, Shabbat.class);
+	    spec = tabHost.newTabSpec("main").setIndicator("Shabat"/*,
+	                      res.getDrawable(R.drawable.ic_tab_preference	)*/)
+	                  .setContent(intent);
+	    tabHost.addTab(spec);
+	    
 	    // Create an Intent to launch an Activity for the tab (to be reused)
 	    intent = new Intent().setClass(this, ShabbatPreference.class);
 
@@ -33,12 +41,6 @@ public class ShabbatTabWidget extends TabActivity {
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
-	    // Do the same for the other tabs
-	    intent = new Intent().setClass(this, Shabbat.class);
-	    spec = tabHost.newTabSpec("main").setIndicator("Shabat"/*,
-	                      res.getDrawable(R.drawable.ic_tab_preference	)*/)
-	                  .setContent(intent);
-	    tabHost.addTab(spec);
 	    
 	    
 	   // View view = getLocalActivityManager().startActivity("ArchiveActivity",

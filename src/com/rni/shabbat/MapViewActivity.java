@@ -17,7 +17,7 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.OverlayItem;
-import com.rni.shabat.R;
+import com.rni.shabbat.R;
 public class MapViewActivity extends MapActivity
 {
 	private MapView mapView;

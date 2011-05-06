@@ -1,6 +1,6 @@
 package com.rni.shabbat;
 
-import com.rni.shabat.R;
+import com.rni.shabbat.R;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;

@@ -9,7 +9,7 @@ import android.util.Log;
 
 
 
-public class Calendar extends Activity {
+public class Calendar extends Activity{
 	
 	public Calendar () {
 		

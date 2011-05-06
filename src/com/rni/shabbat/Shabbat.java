@@ -1,5 +1,6 @@
 package com.rni.shabbat;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -12,9 +13,10 @@ import net.sourceforge.zmanim.ZmanimCalendar;
 import net.sourceforge.zmanim.util.GeoLocation;
 import net.sourceforge.zmanim.util.Taarich;
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.location.Criteria;
@@ -27,18 +29,92 @@ import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.DatePicker;
+import android.widget.ListView;
 import android.widget.Toast;
 
 
+
 public class Shabbat extends Activity {
+	
+	ZmanimCalendar zc;
+	Calendar c;
+	
+    private int mYear;
+    private int mMonth;
+    private int mDay;
+    static final int DATE_DIALOG_ID = 0;
+    DatePickerDialog datepicker;
+
+    // the callback received when the user "sets" the date in the dialog
+    private DatePickerDialog.OnDateSetListener mDateSetListener =
+            new DatePickerDialog.OnDateSetListener() {
+
+                public void onDateSet(DatePicker view, int year, 
+                                      int monthOfYear, int dayOfMonth) {
+                    mYear = year;
+                    mMonth = monthOfYear;
+                    mDay = dayOfMonth;
+                    
+                    Shabbat.this.c.set(year, monthOfYear, dayOfMonth);
+                    Shabbat.this.ShowZmanin();
+
+                }
+            };
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+        case DATE_DIALOG_ID:
+            datepicker = new DatePickerDialog(this,
+                        mDateSetListener,
+                        mYear, mMonth, mDay);
+            return datepicker;
+        }
+        return null;
+    }
+    
+	public void ShowZmanin() {
+		String hebDate = Taarich.GetHebrewDate( c, "Hebrew");
+		ArrayList<String> sArray =  new ArrayList<String>();
+        ListView list = (ListView) findViewById(R.id.list2);
+        
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+
+        
+		Log.e("mDay",String.valueOf(mDay));
+
+
+		sArray.add(hebDate);
+	    sArray.add(getString(R.string.alosText).concat(" ").concat( TimeOfDay(zc.getAlosHashachar()).concat("")));
+	    sArray.add(getString(R.string.sunriseText).concat(" ").concat( TimeOfDay(zc.getSunrise()).concat("")));
+	    sArray.add(getString(R.string.minchaGedolaText).concat(" ").concat( TimeOfDay(zc.getMinchaGedola()).concat("")));
+	    sArray.add(getString(R.string.minchaKetanaText).concat(" ").concat( TimeOfDay(zc.getMinchaKetana()).concat("")));
+	    sArray.add(getString(R.string.tziatText).concat(" ").concat( TimeOfDay(zc.getTzais()).concat("")));
+	    sArray.add(getString(R.string.tziat72Text).concat(" ").concat( TimeOfDay(zc.getTzais72()).concat("")));
+	    sArray.add(getString(R.string.chatzotText).concat(" ").concat( TimeOfDay(zc.getChatzos()).concat("")));
+	    sArray.add(getString(R.string.sofZmanShemaMGText).concat(" ").concat( TimeOfDay(zc.getSofZmanShmaMGA()).concat("")));
+	    sArray.add(getString(R.string.sofZmanShemaGRText).concat(" ").concat( TimeOfDay(zc.getSofZmanShmaGRA()).concat("")));
+
+	    sArray.add(getString(R.string.sofZmanShemaTefilaMGText).concat(" ").concat( TimeOfDay(zc.getSofZmanTfilaMGA()).concat("")));
+	    sArray.add(getString(R.string.sofZmanTefilaGRText).concat(" ").concat( TimeOfDay(zc.getSofZmanTfilaGRA()).concat("")));
+	    
+	    sArray.add(getString(R.string.candleLightingText).concat(" ").concat( TimeOfDay(zc.getCandelLighting()).concat("")));
+	    sArray.add(getString(R.string.plagHaminchaText).concat(" ").concat( TimeOfDay(zc.getPlagHamincha()).concat("")));
+
+	    
+	    list.setAdapter(new ArrayAdapter<String>(this,  R.layout.location_time_info, sArray));
+	
+	}
 	
 	private static final String TAG = "MainActivity";
 	private WheelView minutes ;
 	
     // Called when the activity is first created. 
-    @Override
+	@Override
     public void onCreate(Bundle savedInstanceState) {
     	Locale locale = new Locale("iw");
     	locale.setDefault(locale);
@@ -46,9 +122,15 @@ public class Shabbat extends Activity {
     	    config2.locale = locale;
     	
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.maininfo);
         
-        //final WheelView minutes = (WheelView) findViewById(R.id.hour);
+		String test = "test";
+		//= new ArrayList<String>{"Entry: 17:35", "Exit: 18:24", "Sunrise: 06:25", "Sunset: 18:33", "more info ...", "more info ...", "more info ..."};
+		String[] items = {"a","b","c","d"};
+		//sArray.add(test);
+		//   ArrayAdapter adapter = new ArrayAdapter<String>(this,  R.layout.location_time_info, sArray);
+        
+     //   final WheelView minutes = (WheelView) findViewById(R.id.hour);
  /*       minutes = (WheelView) findViewById(R.id.hour);
         minutes.setViewAdapter(new NumericWheelAdapter(this, 0, 60));
         if (savedInstanceState != null) {
@@ -89,7 +171,7 @@ public class Shabbat extends Activity {
 		//create the location object
 		GeoLocation location = new GeoLocation(locationName, latitude, longitude, elevation, timeZone);
 		//create the ZmanimCalendar
-		ZmanimCalendar zc = new ZmanimCalendar(location);
+		 zc = new ZmanimCalendar(location);
 		//optionally set the internal calendar
 		//zc.getCalendar().set(1969, Calendar.FEBRUARY, 8);
 		
@@ -97,19 +179,27 @@ public class Shabbat extends Activity {
 		Log.e("Shabat","Sunrise: " + zc.getSunrise()); //output sunrise
 		Log.e("Shabat","Sof Zman Shema GRA: " + zc.getSofZmanShmaGRA()); //output Sof Zman Shema GRA
 		Log.e("Shabat","Sunset: " + zc.getSunset()); //output sunset
+
+		/*
+		Object[] sArray = {"Entry: 17:35", "Exit: 18:24", "Sunrise: 06:25", "Sunset: 18:33", "more info ...", "more info ...", "more info ..."};
+        ArrayAdapter adp = new ArrayAdapter(this, R.layout.location_time_info, sArray);
+        setListAdapter(adp);
+		*/
 		
-		Calendar c = zc.getCalendar();
+		
+		
+		c = zc.getCalendar();
 		c.setTimeZone(timeZone);
 		zc.setCalendar(c);
 		
-	    String hebDate = Taarich.GetHebrewDate( c, "Hebrew");
-	    
+		ShowZmanin();
+		
+	    	/*    
 		TextView tv = (TextView) findViewById(R.id.hebDateTV);
         tv.setText(hebDate);	
 	    
 		tv = (TextView) findViewById(R.id.alosValTV);
         tv.setText(TimeOfDay(zc.getAlosHashachar()));
-        
         
         tv = (TextView) findViewById(R.id.sunriseValTV);
         tv.setText(TimeOfDay(zc.getSunrise()));
@@ -147,7 +237,43 @@ public class Shabbat extends Activity {
         
         
         
+        */
         
+		
+        datepicker = new DatePickerDialog(this,
+                mDateSetListener,
+                mYear, mMonth, mDay);
+        
+		Button mPickDate = (Button) findViewById(R.id.date);
+		mPickDate.setOnClickListener(new OnClickListener(){
+            @Override
+            public void onClick(View arg0) {
+                showDialog(DATE_DIALOG_ID);
+            }}); 
+        
+        Button nextBtn = (Button)findViewById(R.id.button_next);
+        nextBtn.setOnClickListener(new OnClickListener(){
+        @Override
+        public void onClick(View arg0) {
+              c.add(Calendar.DAY_OF_MONTH, 1);
+              
+              //SetDate(c);
+              Shabbat.this.ShowZmanin();
+              datepicker.updateDate(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+        }});   
+        
+        Button prevBtn = (Button)findViewById(R.id.button_previous);
+        prevBtn.setOnClickListener(new OnClickListener(){
+        @Override
+        public void onClick(View arg0) {
+              c.add(Calendar.DAY_OF_MONTH, -1);
+              
+              //SetDate(c);
+              Shabbat.this.ShowZmanin();
+              datepicker.updateDate(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+
+        }});        
+        /*
         Log.d(TAG, "starting service");
         Button bindBtn = (Button)findViewById(R.id.bindBtn);
         bindBtn.setOnClickListener(new OnClickListener(){
@@ -163,7 +289,7 @@ public class Shabbat extends Activity {
         public void onClick(View arg0) {
         stopService(new Intent(Shabbat.this,
         BackgroundService.class));
-        }});
+        }});*/
         
 
     }

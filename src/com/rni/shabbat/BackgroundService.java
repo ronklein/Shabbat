@@ -4,7 +4,7 @@ package com.rni.shabbat;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.rni.shabat.R;
+import com.rni.shabbat.R;
 
 import android.app.Notification;
 import android.app.NotificationManager;
