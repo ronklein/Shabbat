@@ -24,4 +24,13 @@
     <string name="tziat72Text">צאת הכובים ר"ת</string>
     <string name="shkiahText">שקיעה</string>
     <string name="candleLightingText">הדלקת נרות</string>
+    <string name="interval_prompt">בחר מידה</string>
+    <string-array name="interval_array">
+        <item>יום</item>
+        <item>שבוע</item>
+        <item>חודש</item>
+        <item>שנה</item>
+        <item>חגים</item>
+    </string-array>
+    <string name="dateText">תאריך</string>
 </resources>

@@ -3,12 +3,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    > 
- <TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="Some tilete"
-    />
+    >
  <Button
          android:id="@+id/location"
          android:layout_height="match_parent"
@@ -33,14 +28,14 @@
          android:textSize="15sp"
          android:text="-"
      />
-     <Button
-         android:id="@+id/scale"
-         android:layout_height="wrap_content"
-         android:layout_width="wrap_content"
-         android:layout_centerHorizontal="true"
-         android:textSize="15sp"
-         android:text="scale"
-     />
+    <Spinner 
+        android:id="@+id/interval_spinner"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+        android:textSize="15sp"
+        
+        android:prompt="@string/interval_prompt"
+    android:layout_centerInParent="true"/>
      <Button
          android:id="@+id/button_next"
          android:layout_height="wrap_content"

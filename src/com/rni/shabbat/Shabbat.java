@@ -17,7 +17,6 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.database.Cursor;
 import android.location.Criteria;
 import android.location.Location;
@@ -29,10 +28,12 @@ import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 
@@ -45,6 +46,7 @@ public class Shabbat extends Activity {
     private int mYear;
     private int mMonth;
     private int mDay;
+    private int mInterval = 1;
     static final int DATE_DIALOG_ID = 0;
     DatePickerDialog datepicker;
 
@@ -89,7 +91,9 @@ public class Shabbat extends Activity {
         mMonth = c.get(Calendar.MONTH);
         mDay = c.get(Calendar.DAY_OF_MONTH);
 
-        
+        Button dateBtn = (Button)findViewById(R.id.date);
+        dateBtn.setText(getString(R.string.dateText)+" "+String.valueOf(mDay)+"-"+String.valueOf(mMonth+1)+"-"+String.valueOf(mYear));
+         
 		Log.e("mDay",String.valueOf(mDay));
 
 
@@ -164,6 +168,9 @@ public class Shabbat extends Activity {
 		double elevation = myLocation.getAltitude();
 		
 		
+		location.getLocationName();
+		
+		
 		String s = String.format("Lat: %2.6f, Long: %2.6f, Alt: %5.6f", latitude,longitude,elevation);
 		
 		Log.e("Shabat",s);
@@ -194,13 +201,35 @@ public class Shabbat extends Activity {
         setListAdapter(adp);
 		*/
 		
-		
+	    Spinner spinner = (Spinner) findViewById(R.id.interval_spinner);
+	    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+	            this, R.array.interval_array, android.R.layout.simple_spinner_item);
+	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+	    spinner.setAdapter(adapter);
+
+	    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+	    	@Override
+	    	public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
+	    	//do something here
+	    		Shabbat.this.mInterval = i;
+	    	}
+	    	 
+	    	@Override
+	    	public void onNothingSelected(AdapterView arg0) {
+	    	//do something else
+	    		
+	    	}
+	    });
+	    
+
 		
 		c = zc.getCalendar();
 		c.setTimeZone(timeZone);
 		zc.setCalendar(c);
 		
 		ShowZmanin();
+		
+		
 		
 	    	/*    
 		TextView tv = (TextView) findViewById(R.id.hebDateTV);
@@ -263,7 +292,14 @@ public class Shabbat extends Activity {
         nextBtn.setOnClickListener(new OnClickListener(){
         @Override
         public void onClick(View arg0) {
-              c.add(Calendar.DAY_OF_MONTH, 1);
+             // c.add(Calendar.DAY_OF_MONTH, 1);
+              
+              switch (mInterval) {
+	              case 0: c.add(Calendar.DAY_OF_MONTH, 1);       break;
+	              case 1: c.add(Calendar.WEEK_OF_MONTH, 1);     break;
+	              case 2: c.add(Calendar.MONTH, 1);        break;
+	              case 3: c.add(Calendar.YEAR, 1);         break;
+              }
               
               //SetDate(c);
               Shabbat.this.ShowZmanin();
@@ -274,8 +310,12 @@ public class Shabbat extends Activity {
         prevBtn.setOnClickListener(new OnClickListener(){
         @Override
         public void onClick(View arg0) {
-              c.add(Calendar.DAY_OF_MONTH, -1);
-              
+            switch (mInterval) {
+	            case 0: c.add(Calendar.DAY_OF_MONTH, -1);       break;
+	            case 1: c.add(Calendar.WEEK_OF_MONTH, -1);     break;
+	            case 2: c.add(Calendar.MONTH, -1);        break;
+	            case 3: c.add(Calendar.YEAR, -1);         break;
+            }              
               //SetDate(c);
               Shabbat.this.ShowZmanin();
               datepicker.updateDate(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
